@@ -1,0 +1,5 @@
+version: "3.4"
+
+services:
+  co-working:
+    image: sbp-k8s-master:5000/co-working

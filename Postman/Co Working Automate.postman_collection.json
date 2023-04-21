@@ -1,0 +1,151 @@
+{
+	"info": {
+		"_postman_id": "deb4e519-3902-4ac5-a377-1b1beff3034c",
+		"name": "Co Working Automate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": ".Create Token (Credentials) (Automates)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonBody = JSON.parse(responseBody);",
+							"pm.environment.set(\"AccessToken\", jsonBody.access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "tokenType",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "client_id",
+							"value": "{{ClientIdAutomate}}",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "{{ClientSecretAutomate}}",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "{{GrantTypeCredentials}}",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "{{ScopeAutomate}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{DomainLocal}}/connect/token",
+					"host": [
+						"{{DomainLocal}}"
+					],
+					"path": [
+						"connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Automates] CheckOut",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{DomainLocal}}/Api/Automates/CheckOut",
+					"host": [
+						"{{DomainLocal}}"
+					],
+					"path": [
+						"Api",
+						"Automates",
+						"CheckOut"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Automates] WaitingForCheckIn",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{DomainLocal}}/Api/Automates/WaitingForCheckIn",
+					"host": [
+						"{{DomainLocal}}"
+					],
+					"path": [
+						"Api",
+						"Automates",
+						"WaitingForCheckIn"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

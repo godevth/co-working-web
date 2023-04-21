@@ -1,0 +1,347 @@
+{
+	"info": {
+		"_postman_id": "67064a87-0d7f-4f2c-9e84-4eeae21902b8",
+		"name": "SSO Consent Mobile",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Req Token (Credential)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setGlobalVariable('AccessToken', jsonData.access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "scope",
+							"value": "SSO",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "coworking.mobile",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "rBeYQyEZ",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url_ssotest}}/connect/token",
+					"host": [
+						"{{url_ssotest}}"
+					],
+					"path": [
+						"connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Api/Consent/GetConsent",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{AccessToken}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "multipart/form-data",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "UserName",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "ClientId",
+							"value": "coworking.consent",
+							"type": "text"
+						},
+						{
+							"key": "ScopesRequest",
+							"value": "profile openid SSO coworking",
+							"type": "text"
+						},
+						{
+							"key": "UserId",
+							"value": "1e7bd635-5478-4426-ba04-0098d211ac57",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "IsAnotherProvider",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "UserId",
+							"value": "1e7bd635-5478-4426-ba04-0098d211ac56",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url_ssotest}}/Api/Consent/GetConsent",
+					"host": [
+						"{{url_ssotest}}"
+					],
+					"path": [
+						"Api",
+						"Consent",
+						"GetConsent"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Api/Consent/GetConsent",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjQxQ0ZGQjAyRDNCMzIyNjM1NTNFMDRGNzJEODFDODhFRTlFRkMwNzQiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJRY183QXRPekltTlZQZ1QzTFlISWp1bnZ3SFEifQ.eyJuYmYiOjE2MTg5Nzk3ODksImV4cCI6MTYxODk4MzM4OSwiaXNzIjoiaHR0cHM6Ly9zc290ZXN0LmJvb25yYXdkLmNvLnRoIiwiYXVkIjpbImh0dHBzOi8vc3NvdGVzdC5ib29ucmF3ZC5jby50aC9yZXNvdXJjZXMiLCJTU08iXSwiY2xpZW50X2lkIjoiY293b3JraW5nLm1vYmlsZSIsInNjb3BlIjpbIlNTTyJdfQ.AbnOUObFXs8MRiPIhTl25wDAITdpP9pJQiCLDr-6Oa9z6X2resgvswFRhsC6QkEPqcbz6sRGYR7IKIG6isqpVuCUfneNOS1fHdcuq1ac1PDyTzjd1a_DAMiMyF0tKz9XTaQ7LOoMCIp1g9vr28r6wuHqn7lHHpE2wU1E960s8EdTh2xQuM47fHDRYrnZwwkqufxVpFHrgffOymmFVhIxlFlCqOrHQarQc1leDt2ZIQulDYesmOjspwWJatXH1Sphqv7MWTGw5K6fORzlgsLyc17u2HIhFdo7v0n33wlQtWF20HjVxD_zqVZ7MHJq2p2g8Q_G6vUWZGNFuAr1g0_LXA",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "UserName",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "ClientId",
+									"value": "coworking.consent",
+									"type": "text"
+								},
+								{
+									"key": "ScopesRequest",
+									"value": "profile openid SSO coworking",
+									"type": "text"
+								},
+								{
+									"key": "UserId",
+									"value": "1e7bd635-5478-4426-ba04-0098d211ac57",
+									"type": "text"
+								},
+								{
+									"key": "IsAnotherProvider",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url_ssotest}}/Api/Consent/GetConsent",
+							"host": [
+								"{{url_ssotest}}"
+							],
+							"path": [
+								"Api",
+								"Consent",
+								"GetConsent"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 21 Apr 2021 04:45:16 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"HasValidationError\": false,\n    \"ValidationError\": null,\n    \"Result\": {\n        \"ClientName\": \"Coworking Consent\",\n        \"TermsAndConTH\": \"<p class=\\\"MsoNormal\\\" style=\\\"margin-bottom: 2.0pt; mso-layout-grid-align: none; text-autospace: none;\\\"><strong><span lang=\\\"TH\\\" style=\\\"font-size: 16.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">ข้อกำหนดและเงื่อนไขการใช้งาน</span></strong></p>\\n<p class=\\\"MsoNormal\\\" style=\\\"mso-layout-grid-align: none; text-autospace: none;\\\"><span lang=\\\"TH\\\" style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">ข้อกำหนดและเงื่อนไข</span><span lang=\\\"TH\\\" style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi;\\\">ในการใช้งาน</span><span lang=\\\"TH\\\" style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">ที่ระบุไว้ดังต่อไปนี้ (ต่อไปนี้เรียกว่า </span><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">&ldquo;</span><span lang=\\\"TH\\\" style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi;\\\">ข้อกำหนดและเงื่อนไขฯ</span><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">&rdquo;) </span><span lang=\\\"TH\\\" style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi;\\\">ได้ระบุถึงข้อกำหนดและเงื่อนไขในการใช้งานผลิตภัณฑ์และบริการใดๆ (เรียกรวมกันว่า </span><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">&ldquo;</span><span lang=\\\"TH\\\" style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi;\\\">บริการฯ</span><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">&rdquo;)<span lang=\\\"TH\\\"> ของบริษัท เอสบีพี ดิจิทัล เซอร์วิส จำกัด <span style=\\\"mso-spacerun: yes;\\\">&nbsp;</span></span></span><span lang=\\\"TH\\\" style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi;\\\">(ต่อไปนี้เรียกว่า </span><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">&ldquo;</span><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi;\\\">SBP</span><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">&rdquo;) <span lang=\\\"TH\\\">ในฐานะผู้ให้บริการแอปพลิเคชัน แก่ผู้ใช้บริการ </span></span><span lang=\\\"TH\\\" style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi;\\\">(โดยแต่ละรายเรียกว่า \\\"ผู้ใช้\\\" หรือ </span><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">&ldquo;</span><span lang=\\\"TH\\\" style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi;\\\">ผู้ใช้รายต่างๆ</span><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">&rdquo; </span><span lang=\\\"TH\\\" style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi;\\\">ขึ้นอยู่กับเนื้อหา)</span><span lang=\\\"TH\\\" style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">โปรดอ่านข้อตกลงนี้อย่างละเอียดและครบถ้วน</span></p>\\n<p class=\\\"MsoNormal\\\" style=\\\"mso-layout-grid-align: none; text-autospace: none;\\\"><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">&nbsp;</span></p>\\n<p class=\\\"MsoNormal\\\" style=\\\"mso-layout-grid-align: none; text-autospace: none;\\\"><span lang=\\\"TH\\\" style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">ข้อตกลงนี้กำกับดูแลและกำหนดแนวทางปฏิบัติในการใช้บริการบนแอปพลิเคชันของ </span><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">SBP <span lang=\\\"TH\\\">ซึ่งขึ้นอยู่กับนโยบายและดุลพินิจของ บริษัท เอสบีพี ดิจิทัล เซอร์วิส จำกัด แต่เพียงฝ่ายเดียวเท่านั้น</span></span></p>\\n<p class=\\\"MsoNormal\\\" style=\\\"mso-layout-grid-align: none; text-autospace: none;\\\"><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">&nbsp;</span></p>\\n<p class=\\\"MsoListParagraph\\\" style=\\\"text-indent: -.25in; mso-list: l0 level1 lfo1; mso-layout-grid-align: none; text-autospace: none;\\\"><!-- [if !supportLists]--><span style=\\\"font-size: 13.0pt; font-family: Thonburi; mso-ascii-font-family: Thonburi; mso-fareast-font-family: Thonburi; mso-hansi-font-family: 'Cordia New'; mso-hansi-theme-font: minor-bidi;\\\"><span style=\\\"mso-list: Ignore;\\\">1.<span style=\\\"font: 7.0pt 'Times New Roman';\\\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span lang=\\\"TH\\\" style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">คำนิยาม</span></p>\\n<p class=\\\"MsoNormal\\\" style=\\\"mso-layout-grid-align: none; text-autospace: none;\\\"><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">&nbsp;</span></p>\\n<p class=\\\"MsoListParagraphCxSpFirst\\\" style=\\\"margin-left: .75in; mso-add-space: auto; text-indent: -.5in; mso-list: l0 level2 lfo1; mso-layout-grid-align: none; text-autospace: none;\\\"><!-- [if !supportLists]--><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-fareast-font-family: 'Cordia New'; mso-fareast-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\"><span style=\\\"mso-list: Ignore;\\\">1.1.<span style=\\\"font: 7.0pt 'Times New Roman';\\\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">&ldquo;</span><span style=\\\"font-size: 13.0pt; mso-bidi-font-size: 16.5pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">SBP</span><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">&rdquo; <span lang=\\\"TH\\\">หมายถึง บริษัท เอสบีพี ดิจิทัล เซอร์วิส จำกัด</span></span></p>\\n<p class=\\\"MsoListParagraphCxSpMiddle\\\" style=\\\"margin-left: .75in; mso-add-space: auto; text-indent: -.5in; mso-list: l0 level2 lfo1; mso-layout-grid-align: none; text-autospace: none;\\\"><!-- [if !supportLists]--><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-fareast-font-family: 'Cordia New'; mso-fareast-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\"><span style=\\\"mso-list: Ignore;\\\">1.2.<span style=\\\"font: 7.0pt 'Times New Roman';\\\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">&ldquo;<span lang=\\\"TH\\\">ผู้ใช้งาน</span>&rdquo; <span lang=\\\"TH\\\">หมายถึง ผู้ใช้บริการแอปพลิเคชัน หรือผู้ลงทะเบียนเป็นสมาชิกบนระบบของ </span>CoSpace <span lang=\\\"TH\\\">หรือ ระบบที่เกี่ยวข้อง ที่ให้บริการโดย </span>&ldquo;SBP&rdquo;</span></p>\\n<p class=\\\"MsoListParagraphCxSpMiddle\\\" style=\\\"margin-left: .75in; mso-add-space: auto; text-indent: -.5in; mso-list: l0 level2 lfo1; mso-layout-grid-align: none; text-autospace: none;\\\"><!-- [if !supportLists]--><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-fareast-font-family: 'Cordia New'; mso-fareast-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\"><span style=\\\"mso-list: Ignore;\\\">1.3.<span style=\\\"font: 7.0pt 'Times New Roman';\\\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">&ldquo;<span lang=\\\"TH\\\">ลูกค้า</span>&rdquo; <span lang=\\\"TH\\\">หมายถึง ผู้ที่มีความประสงค์ที่จะเช่าสถานที่ และ/หรือ ได้รับบริการอันเกี่ยวข้องกับสถานที่เช่าจากเจ้าของสถานที่</span></span></p>\\n<p class=\\\"MsoListParagraphCxSpMiddle\\\" style=\\\"margin-left: .75in; mso-add-space: auto; text-indent: -.5in; mso-list: l0 level2 lfo1; mso-layout-grid-align: none; text-autospace: none;\\\"><!-- [if !supportLists]--><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-fareast-font-family: 'Cordia New'; mso-fareast-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\"><span style=\\\"mso-list: Ignore;\\\">1.4.<span style=\\\"font: 7.0pt 'Times New Roman';\\\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">&ldquo;<span lang=\\\"TH\\\">เจ้าของสถานที่</span>&rdquo; <span lang=\\\"TH\\\">หมายถึง ผู้มีกรรมสิทธิ์ หรือผู้มีสิทธิครอบครอง หรือผู้มีสิทธิ์ ในการนำสถานที่ออกให้เช่า และ/หรือ ให้บริการในสถานที่ที่นำออกให้เช่า และรวมถึงผู้ที่ได้รับมอบอำนาจ หรือผู้ที่ได้รับมอบหมาย จากเจ้าของสถานที่เช่า ซึ่งให้มีอำนาจในการนำออกให้เช่าและตกลงตอบรับการให้เช่าสถานที่หรือให้บริการอันเกี่ยวกับสถานที่ที่เช่านั้นด้วย</span></span></p>\\n<p class=\\\"MsoListParagraphCxSpMiddle\\\" style=\\\"margin-left: .75in; mso-add-space: auto; text-indent: -.5in; mso-list: l0 level2 lfo1; mso-layout-grid-align: none; text-autospace: none;\\\"><!-- [if !supportLists]--><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-fareast-font-family: 'Cordia New'; mso-fareast-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\"><span style=\\\"mso-list: Ignore;\\\">1.5.<span style=\\\"font: 7.0pt 'Times New Roman';\\\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">&ldquo;<span lang=\\\"TH\\\">สถานที่เช่า</span>&rdquo; <span lang=\\\"TH\\\">หมายถึง บริเวณพื้นที่และสถานที่ทั้งหมด ที่เจ้าของสถานที่ประสงค์นำออกให้ลูกค้าหรือบุคคลอื่นเช่า</span></span></p>\\n<p class=\\\"MsoListParagraphCxSpMiddle\\\" style=\\\"margin-left: .75in; mso-add-space: auto; text-indent: -.5in; mso-list: l0 level2 lfo1; mso-layout-grid-align: none; text-autospace: none;\\\"><!-- [if !supportLists]--><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-fareast-font-family: 'Cordia New'; mso-fareast-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\"><span style=\\\"mso-list: Ignore;\\\">1.6.<span style=\\\"font: 7.0pt 'Times New Roman';\\\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">&ldquo;<span lang=\\\"TH\\\">แอปพลิเคชัน</span>&rdquo; <span lang=\\\"TH\\\">หมายถึง แอปพลิเคชัน </span></span><span style=\\\"font-size: 13.0pt; mso-bidi-font-size: 16.5pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">CoSpace</span><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\"> <span lang=\\\"TH\\\">หรือ ระบบที่เกี่ยวข้อง ที่ให้บริการโดย </span>&ldquo;SBP&rdquo;</span></p>\\n<p class=\\\"MsoListParagraphCxSpLast\\\" style=\\\"margin-left: .75in; mso-add-space: auto; text-indent: -.5in; mso-list: l0 level2 lfo1; mso-layout-grid-align: none; text-autospace: none;\\\"><!-- [if !supportLists]--><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-fareast-font-family: 'Cordia New'; mso-fareast-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\"><span style=\\\"mso-list: Ignore;\\\">1.7.<span style=\\\"font: 7.0pt 'Times New Roman';\\\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">&ldquo;<span lang=\\\"TH\\\">บัญชี</span>&rdquo; <span lang=\\\"TH\\\">หมายถึง บัญชีผู้ใช้งานที่เปิดใน </span>CoSpace <span lang=\\\"TH\\\">หรือ ระบบที่เกี่ยวข้อง ที่ให้บริการโดย </span>&ldquo;SBP&rdquo;</span></p>\\n<p class=\\\"MsoNormal\\\" style=\\\"mso-layout-grid-align: none; text-autospace: none;\\\"><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">&nbsp;</span></p>\\n<p class=\\\"MsoListParagraphCxSpFirst\\\" style=\\\"text-indent: -.25in; mso-list: l0 level1 lfo1; mso-layout-grid-align: none; text-autospace: none;\\\"><!-- [if !supportLists]--><span style=\\\"font-size: 13.0pt; font-family: Thonburi; mso-ascii-font-family: Thonburi; mso-fareast-font-family: Thonburi; mso-hansi-font-family: 'Cordia New'; mso-hansi-theme-font: minor-bidi;\\\"><span style=\\\"mso-list: Ignore;\\\">2.<span style=\\\"font: 7.0pt 'Times New Roman';\\\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span lang=\\\"TH\\\" style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi;\\\">การตกลงยอมรับข้อกำหนดและเงื่อนไขฯ ฉบับนี้</span></p>\\n<p class=\\\"MsoListParagraphCxSpMiddle\\\" style=\\\"margin-left: .75in; mso-add-space: auto; text-indent: -.5in; mso-list: l0 level2 lfo1; mso-layout-grid-align: none; text-autospace: none;\\\"><!-- [if !supportLists]--><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-fareast-font-family: 'Cordia New'; mso-fareast-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\"><span style=\\\"mso-list: Ignore;\\\">2.1.<span style=\\\"font: 7.0pt 'Times New Roman';\\\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span lang=\\\"TH\\\" style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">การเข้าถึงแอปพลิเคชันนี้ ผู้ใช้งานยืนยันว่าผู้ใช้งานเข้าใจ \\\"ข้อกำหนดและเงื่อนไขการใช้งาน\\\" ทั้งหมดแล้ว ถ้าผู้ใช้งานไม่ยอมรับข้อกำหนดและเงื่อนไขเหล่านี้ในการใช้งาน ผู้ใช้งานไม่สามารถใช้แอปพลิเคชันนี้ได้ แอปพลิเคชันขอสงวนสิทธิ์ในการเปลี่ยนแปลงแก้ไขเพิ่มหรือลบบางส่วนของข้อกำหนดและเงื่อนไขนี้ในการใช้งานได้ตลอดเวลา การเปลี่ยนแปลงจะมีผลเมื่อเราได้เปลี่ยนแปลงข้อบังคับดังกล่าวบนแอปพลิเคชันโดยไม่จำเป็นจะต้องมีการแจ้งให้ทราบล่วงหน้า กรุณาตรวจสอบข้อกำหนดและเงื่อนไขนี้ ในการใช้งานเป็นประจำ สำหรับการปรับปรุงข้อมูลต่าง ๆ หากผู้ใช้งานใช้งานแอปพลิเคชันหลังการเปลี่ยนแปลงข้อกำหนดและเงื่อนไขนี้ในการใช้งานถือว่าผู้ใช้งานยอมรับข้อเปลี่ยนแปลงนั้นไปโดยปริยาย</span></p>\\n<p class=\\\"MsoListParagraphCxSpMiddle\\\" style=\\\"margin-left: .75in; mso-add-space: auto; text-indent: -.5in; mso-list: l0 level2 lfo1; mso-layout-grid-align: none; text-autospace: none;\\\"><!-- [if !supportLists]--><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-fareast-font-family: 'Cordia New'; mso-fareast-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\"><span style=\\\"mso-list: Ignore;\\\">2.2.<span style=\\\"font: 7.0pt 'Times New Roman';\\\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span lang=\\\"TH\\\" style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">แอปพลิเคชันเป็นแพลตฟอร์มออนไลน์ซึ่งรวบรวมสถานที่ที่เจ้าของสถานที่ต้องการนำออกมาให้เช่า และเป็นช่องทางเพื่อให้ลูกค้าที่ต้องการเช่าสถานที่สำหรับทำงาน และ/หรือดูรายละเอียดหรือบริการเกี่ยวกับการเช่าสถานที่ สัญญาเช่าสถานที่ที่แท้จริงเป็นสัญญาระหว่างเจ้าของสถานที่และลูกค้าโดยตรง และ </span><span style=\\\"font-size: 13.0pt; mso-bidi-font-size: 16.5pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">SBP</span><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\"> <span lang=\\\"TH\\\">ไม่ได้เป็นคู่สัญญาของสัญญาฉบับนั้นหรือสัญญาอื่นใดระหว่างเจ้าของสถานที่และลูกค้า และจะไม่ยอมรับข้อผูกพันใด ๆ ที่เกี่ยวเนื่องกับสัญญาดังกล่าว คู่สัญญาของธุรกรรมดังกล่าวจะรับผิดชอบต่อสัญญาเช่าสถานที่ระหว่างคู่สัญญาทั้งหมด เงื่อนไขและรายละเอียดการเช่าสถานที่และสิ่งอื่นที่คล้ายกัน </span>SBP <span lang=\\\"TH\\\">ไม่มีส่วนเกี่ยวข้องในธุรกรรมระหว่างผู้ใช้งาน</span></span></p>\\n<p class=\\\"MsoListParagraphCxSpMiddle\\\" style=\\\"margin-left: .75in; mso-add-space: auto; text-indent: -.5in; mso-list: l0 level2 lfo1; mso-layout-grid-align: none; text-autospace: none;\\\"><!-- [if !supportLists]--><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-fareast-font-family: 'Cordia New'; mso-fareast-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\"><span style=\\\"mso-list: Ignore;\\\">2.3.<span style=\\\"font: 7.0pt 'Times New Roman';\\\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">SBP <span lang=\\\"TH\\\">ไม่มีการเรียกเก็บค่าธรรมเนียมการใช้แอปพลิเคชันจากผู้ใช้งาน </span></span></p>\\n<p class=\\\"MsoListParagraphCxSpMiddle\\\" style=\\\"margin-left: .75in; mso-add-space: auto; text-indent: -.5in; mso-list: l0 level2 lfo1; mso-layout-grid-align: none; text-autospace: none;\\\"><!-- [if !supportLists]--><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-fareast-font-family: 'Cordia New'; mso-fareast-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\"><span style=\\\"mso-list: Ignore;\\\">2.4.<span style=\\\"font: 7.0pt 'Times New Roman';\\\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span lang=\\\"TH\\\" style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">เนื้อหาที่ปรากฏบนแอปพลิเคชันนี้มีจุดประสงค์เพื่อให้ข้อมูลเท่านั้น คำอธิบายสถานที่ที่แสดงบนแอปพลิเคชันนี้ถูกสร้างขึ้นโดยเจ้าของสถานที่ ซึ่งไม่ได้ถูกสร้างโดย </span><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">SBP <span lang=\\\"TH\\\">และ </span>SBP <span lang=\\\"TH\\\">ไม่ทำการคัดกรองเนื้อหาหรือข้อมูลรายละเอียดสถานที่หรือบริการใด ๆ </span>SBP <span lang=\\\"TH\\\">ไม่สามารถรับประกันได้ว่าลูกค้าจะทำการตกลงเช่าสถานที่</span></span></p>\\n<p class=\\\"MsoListParagraphCxSpMiddle\\\" style=\\\"margin-left: .75in; mso-add-space: auto; text-indent: -.5in; mso-list: l0 level2 lfo1; mso-layout-grid-align: none; text-autospace: none;\\\"><!-- [if !supportLists]--><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-fareast-font-family: 'Cordia New'; mso-fareast-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\"><span style=\\\"mso-list: Ignore;\\\">2.5.<span style=\\\"font: 7.0pt 'Times New Roman';\\\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span lang=\\\"TH\\\" style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">การแชร์หรือแสดงความคิดเห็นบนแอปพลิเคชันนี้เป็นของแต่ละโพสต์โดยแต่ละบุคคล ซึ่งเนื้อหาดังกล่าวอาจไม่สะท้อนความคิดเห็นของแอปพลิเคชันแต่อย่างใด</span></p>\\n<p class=\\\"MsoListParagraphCxSpLast\\\" style=\\\"text-indent: -.25in; mso-list: l0 level1 lfo1; mso-layout-grid-align: none; text-autospace: none;\\\"><!-- [if !supportLists]--><span style=\\\"font-size: 13.0pt; font-family: Thonburi; mso-ascii-font-family: Thonburi; mso-fareast-font-family: Thonburi; mso-hansi-font-family: 'Cordia New'; mso-hansi-theme-font: minor-bidi;\\\"><span style=\\\"mso-list: Ignore;\\\">3.<span style=\\\"font: 7.0pt 'Times New Roman';\\\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span lang=\\\"TH\\\" style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi;\\\">การคุ้มครองข้อมูลส่วนบุคคล</span><span lang=\\\"TH\\\" style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\"> และ ความเป็นส่วนตัว</span></p>\\n<p class=\\\"MsoNormal\\\" style=\\\"mso-layout-grid-align: none; text-autospace: none;\\\"><span lang=\\\"TH\\\" style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">ความเป็นส่วนตัวของผู้ใช้งานมีความสำคัญมากสำหรับเรา เพื่อให้คุ้มครองสิทธิของผู้ใช้งานได้ดีขึ้น เราจึงได้จัดทำ<u>นโยบายความเป็นส่วนตัว</u>ของ </span><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">SBP <span lang=\\\"TH\\\">เพื่ออธิบายแนวทางปฏิบัติด้านความเป็นส่วนตัวในรายละเอียด โปรดอ่านนโยบายความเป็นส่วนตัวนี้เพื่อให้เข้าใจว่า </span>SBP <span lang=\\\"TH\\\">เก็บรวบรวมและใช้ข้อมูลที่เกี่ยวกับบัญชีของผู้ใช้งานและ/หรือการใช้งานบริการของผู้ใช้งานอย่างไร โดยการใช้บริการหรือให้ข้อมูลทางแอปพลิเคชัน ผู้ใช้งานยินยอมให้ </span>SBP <span lang=\\\"TH\\\">เก็บรวบรวมข้อมูลการใช้งาน เปิดเผย และ/หรือดำเนินการกับเนื้อหาและข้อมูลส่วนบุคคลของผู้ใช้งานตามที่อธิบายไว้ในนโยบายความเป็นส่วนตัว</span></span></p>\\n<p class=\\\"MsoNormal\\\" style=\\\"mso-layout-grid-align: none; text-autospace: none;\\\"><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">&nbsp;</span></p>\\n<p class=\\\"MsoListParagraphCxSpFirst\\\" style=\\\"text-indent: -.25in; mso-list: l0 level1 lfo1; mso-layout-grid-align: none; text-autospace: none;\\\"><!-- [if !supportLists]--><span style=\\\"font-size: 13.0pt; font-family: Thonburi; mso-ascii-font-family: Thonburi; mso-fareast-font-family: Thonburi; mso-hansi-font-family: 'Cordia New'; mso-hansi-theme-font: minor-bidi;\\\"><span style=\\\"mso-list: Ignore;\\\">4.<span style=\\\"font: 7.0pt 'Times New Roman';\\\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span lang=\\\"TH\\\" style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">ข้อสงวนสิทธิเกี่ยวกับทรัพย์สินทางปัญญา</span></p>\\n<p class=\\\"MsoListParagraphCxSpLast\\\" style=\\\"margin-left: .75in; mso-add-space: auto; text-indent: -.5in; mso-list: l0 level2 lfo1; mso-layout-grid-align: none; text-autospace: none;\\\"><!-- [if !supportLists]--><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-fareast-font-family: 'Cordia New'; mso-fareast-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\"><span style=\\\"mso-list: Ignore;\\\">4.1.<span style=\\\"font: 7.0pt 'Times New Roman';\\\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">SBP <span lang=\\\"TH\\\">และบริษัทในเครือเป็นผู้ถือกรรมสิทธิ์หรือเจ้าของแต่เพียงผู้เดียวตามรายละเอียดดังต่อไปนี้</span></span></p>\\n<p class=\\\"MsoNormal\\\" style=\\\"mso-layout-grid-align: none; text-autospace: none;\\\"><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\"><span style=\\\"mso-tab-count: 1;\\\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span style=\\\"font-size: 13.0pt; font-family: 'Apple Color Emoji'; mso-bidi-font-family: 'Apple Color Emoji';\\\">▪</span><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\"><span style=\\\"mso-tab-count: 1;\\\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span lang=\\\"TH\\\">ข้อความ รูปภาพ ภาพเคลื่อนไหว เสียง เนื้อหาข้อมูล และส่วนประกอบใดๆ ทั้งหมดที่ปรากฏบนแอปพลิเคชันของ </span>SBP <span lang=\\\"TH\\\">และรวมถึงซอฟท์แวร์ โปรแกรมคอมพิวเตอร์ในระบบของ </span>SBP <span lang=\\\"TH\\\">ถือเป็นงานอันมีลิขสิทธิ์ของ </span>SBP</span></p>\\n<p class=\\\"MsoNormal\\\" style=\\\"mso-layout-grid-align: none; text-autospace: none;\\\"><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\"><span style=\\\"mso-tab-count: 1;\\\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span style=\\\"font-size: 13.0pt; font-family: 'Apple Color Emoji'; mso-bidi-font-family: 'Apple Color Emoji';\\\">▪</span><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\"><span style=\\\"mso-tab-count: 1;\\\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span lang=\\\"TH\\\">สิทธิในเครื่องหมายการค้า เครื่องหมายบริการ ชื่อ ชื่อทางการค้า สิทธิบัตร โนว์ฮาว โดเมนเนม หรือสิทธิอื่นในลักษณะเดียวกัน ซึ่งจัดเป็นงานอันได้รับความคุ้มครองตามกฎหมายทรัพย์สินทางปัญญาและกฎหมายอื่นที่เกี่ยวข้อง ถือเป็นทรัพย์สินทางปัญญาโดยชอบด้วยกฎหมายของ </span>SBP <span lang=\\\"TH\\\">แต่เพียงผู้เดียว</span></span></p>\\n<p class=\\\"MsoNormal\\\" style=\\\"mso-layout-grid-align: none; text-autospace: none;\\\"><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">&nbsp;</span></p>\\n<p class=\\\"MsoListParagraphCxSpFirst\\\" style=\\\"margin-left: .75in; mso-add-space: auto; text-indent: -.5in; mso-list: l0 level2 lfo1; mso-layout-grid-align: none; text-autospace: none;\\\"><!-- [if !supportLists]--><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-fareast-font-family: 'Cordia New'; mso-fareast-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\"><span style=\\\"mso-list: Ignore;\\\">4.2.<span style=\\\"font: 7.0pt 'Times New Roman';\\\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span lang=\\\"TH\\\" style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">ห้ามผู้ใดทำซ้ำ คัดลอก ลอกเลียน ดัดแปลง ปลอมแปลง จัดเผยแพร่ จำหน่าย ให้เช่า เข้าครอบครอง เรียกดึงข้อมูล บันทึก ส่งผ่าน หรือกระทำการใด ๆ เกี่ยวกับสิทธิและทรัพย์สินทางปัญญาของ </span><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">SBP <span lang=\\\"TH\\\">โดยไม่ชอบด้วยกฎหมาย หรือโดยไม่ได้รับอนุญาตอย่างเป็นทางการจาก </span>SBP <span lang=\\\"TH\\\">หรือโดยก่อให้เกิดความเสียหายแก่ </span>SBP <span lang=\\\"TH\\\">อันเป็นการกระทำความผิดทางอาญา ซึ่งต้องได้รับโทษ ตามพระราชบัญญัติทรัพย์สินทางปัญญาฯ และกฎหมายอื่นที่เกี่ยวข้อง อีกทั้งเป็นการกระทำละเมิดต่อ </span>SBP <span lang=\\\"TH\\\">ซึ่ง </span>SBP <span lang=\\\"TH\\\">สงวนสิทธิในการยับยั้งการกระทำนั้นในทันที และจะดำเนินการทางกฎหมายต่อผู้กระทำละเมิดอย่างเด็ดขาดโดยไม่มีข้อยกเว้น</span></span></p>\\n<p class=\\\"MsoListParagraphCxSpLast\\\" style=\\\"margin-left: .75in; mso-add-space: auto; text-indent: -.5in; mso-list: l0 level2 lfo1; mso-layout-grid-align: none; text-autospace: none;\\\"><!-- [if !supportLists]--><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-fareast-font-family: 'Cordia New'; mso-fareast-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\"><span style=\\\"mso-list: Ignore;\\\">4.3.<span style=\\\"font: 7.0pt 'Times New Roman';\\\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">SBP <span lang=\\\"TH\\\">เป็นผู้ถือกรรมสิทธิ์ในแอปพลิเคชันและเนื้อหาทั้งหมด รวมถึงสำเนาแอปพลิเคชันและสำเนาเนื้อหาทั้งหมด แม้ว่าหลังจากที่ผู้ใช้งานได้มีการสำเนาเนื้อหาลงในโทรศัพท์เคลื่อนที่หรืออุปกรณ์อื่น ๆ ในลักษณะเดียวกัน โดยผู้ใช้งานเพียงได้รับสิทธิอนุญาตให้ใช้งานหรือบริการบนแอปพลิเคชันของ </span>SBP <span lang=\\\"TH\\\">เท่านั้น</span></span></p>\\n<p class=\\\"MsoNormal\\\" style=\\\"mso-layout-grid-align: none; text-autospace: none;\\\"><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">&nbsp;</span></p>\\n<p class=\\\"MsoListParagraph\\\" style=\\\"margin-left: .75in; mso-add-space: auto; text-indent: -.5in; mso-list: l0 level2 lfo1; mso-layout-grid-align: none; text-autospace: none;\\\"><!-- [if !supportLists]--><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-fareast-font-family: 'Cordia New'; mso-fareast-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\"><span style=\\\"mso-list: Ignore;\\\">4.4.<span style=\\\"font: 7.0pt 'Times New Roman';\\\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span lang=\\\"TH\\\" style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">ผู้ใช้งานให้สิทธิ์แก่ </span><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">SBP <span lang=\\\"TH\\\">โดยไม่จำกัดแต่เพียงผู้เดียวเป็นการถาวรและเพิกถอนไม่ได้ อย่างไม่มีภาระและค่าลิขสิทธิ์รวมทั้งความสามารถในการใช้งานทั่วโลกและให้สิทธิ์ในการรวบรวม จัดเก็บ ทำซ้ำ แก้ไข ดัดแปลง สร้างงานที่ต่อเนื่องจากถ่ายโอน โอนช่วงสิทธิ์ ให้และแจกจ่ายได้ไม่ว่าเพียงบางส่วนหรือทั้งหมด ซึ่งข้อมูลเนื้อหาในประกาศและข้อมูลของผู้ใช้งานที่มีความเกี่ยวข้องเชื่อมโยงกับบริการต่าง ๆ ของ </span>SBP <span lang=\\\"TH\\\">ไม่ว่าจะด้วยรูปแบบ วิธีการ หรือเทคโนโลยีใดก็ตาม หรือสร้างขึ้นหลังจากนี้ก็ตาม นอกเหนือจากสิทธิ์ที่ซึ่งมอบให้ในข้อนี้อย่างเฉพาะแล้ว ผู้ใช้งานตกลงที่จะสละสิทธิ์ทางศีลธรรมหรือสิทธิ์ที่เท่าเทียมกันภายใต้กฎหมายที่นำมาบังคับใช้</span></span></p>\\n<p class=\\\"MsoNormal\\\" style=\\\"mso-layout-grid-align: none; text-autospace: none;\\\"><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">&nbsp;</span></p>\\n<p class=\\\"MsoListParagraph\\\" style=\\\"margin-left: .75in; mso-add-space: auto; text-indent: -.5in; mso-list: l0 level2 lfo1; mso-layout-grid-align: none; text-autospace: none;\\\"><!-- [if !supportLists]--><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-fareast-font-family: 'Cordia New'; mso-fareast-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\"><span style=\\\"mso-list: Ignore;\\\">4.5.<span style=\\\"font: 7.0pt 'Times New Roman';\\\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><!--[endif]--><span lang=\\\"TH\\\" style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">หากท่านเป็นเจ้าของสิทธิในทรัพย์สินทางปัญญาเหนือสถานที่หรือบริการใดที่ลงประกาศบนแอปพลิเคชันของ </span><span style=\\\"font-size: 13.0pt; font-family: 'Cordia New',sans-serif; mso-ascii-theme-font: minor-bidi; mso-hansi-theme-font: minor-bidi; mso-bidi-theme-font: minor-bidi;\\\">SBP <span lang=\\\"TH\\\">หรือเป็นตัวแทนโดยชอบด้วยกฎหมายของบุคคลดังกล่าว และท่านเชื่อว่าสิทธิในทรัพย์สินทางปัญญาของท่านถูกละเมิด ท่านสามารถทำหนังสือแจ้งข้อเท็จจริงระบุรายการประกาศสถานที่หรือบริการที่เกี่ยวข้อง พร้อมแนบหลักฐานการอ้างสิทธิ ส่งมายัง </span>contact@sbpds.co.th <span lang=\\\"TH\\\">เพื่อให้ </span>SBP <span lang=\\\"TH\\\">ตรวจสอบ ซึ่ง </span>SBP <span lang=\\\"TH\\\">อาจให้ความร่วมมือในการลบประกาศสถานที่หรือบริการตามที่ได้รับแจ้งออกจากระบบในเบื้องต้น อันเป็นการกระทำโดยสุจริตเพื่อคุ้มครองสิทธิของผู้เกี่ยวข้อง แต่ </span>SBP <span lang=\\\"TH\\\">ไม่รับรองถึงผลการดำเนินการและไม่มีความรับผิดหรือภาระผูกพันใดในการดำเนินการดังกล่าว ทั้งนี้ ข้อพิพาทและความรับผิดเป็นเรื่องระหว่างผู้อ้างสิทธิและผู้ใช้งานต่อกันเองเท่านั้น</span><br style=\\\"mso-special-character: line-break;\\\" /></span></p>\",\n        \"TermsAndConEN\": \"<h3 class=\\\"LC20lb DKV0Md\\\" style=\\\"font-size: 22px; font-weight: normal; margin: 0px 0px 4px; padding: 5px 0px 0px; display: inline-block; line-height: 1.273; font-family: 'Google Sans', arial, sans-serif; letter-spacing: 0.3px; position: relative; top: 1px; text-decoration: underline; vertical-align: top; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 632px;\\\">Terms and Condition</h3>\",\n        \"AnotherProviderGranted\": false,\n        \"IdentityScopes\": [\n            {\n                \"Name\": \"openid\",\n                \"DisplayName\": \"Your user identifier\",\n                \"Description\": null,\n                \"Emphasize\": false,\n                \"Required\": true,\n                \"Checked\": true,\n                \"Claims\": [\n                    {\n                        \"ClaimType\": \"sub\",\n                        \"ClaimValue\": null,\n                        \"Required\": false,\n                        \"Display\": null,\n                        \"Description\": null\n                    }\n                ]\n            },\n            {\n                \"Name\": \"profile\",\n                \"DisplayName\": \"User profile\",\n                \"Description\": \"Your user profile information (first name, last name, email)\",\n                \"Emphasize\": true,\n                \"Required\": true,\n                \"Checked\": true,\n                \"Claims\": [\n                    {\n                        \"ClaimType\": \"given_name\",\n                        \"ClaimValue\": null,\n                        \"Required\": true,\n                        \"Display\": \"First Name\",\n                        \"Description\": \"First Name\"\n                    },\n                    {\n                        \"ClaimType\": \"family_name\",\n                        \"ClaimValue\": null,\n                        \"Required\": true,\n                        \"Display\": \"Last Name\",\n                        \"Description\": \"Last Name\"\n                    },\n                    {\n                        \"ClaimType\": \"email\",\n                        \"ClaimValue\": null,\n                        \"Required\": true,\n                        \"Display\": \"Email\",\n                        \"Description\": \"Email\"\n                    }\n                ]\n            }\n        ],\n        \"ResourceScopes\": [\n            {\n                \"Name\": \"coworking\",\n                \"DisplayName\": \"CoWorking Profile\",\n                \"Description\": null,\n                \"Emphasize\": true,\n                \"Required\": false,\n                \"Checked\": true,\n                \"Claims\": [\n                    {\n                        \"ClaimType\": \"email\",\n                        \"ClaimValue\": null,\n                        \"Required\": true,\n                        \"Display\": \"E-mail\",\n                        \"Description\": \"E-mail\"\n                    }\n                ]\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Api/Consent/Submit",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{AccessToken}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"UserName\" : \"\",\r\n    \"UserId\" : \"1e7bd635-5478-4426-ba04-0098d211ac56\",\r\n    \"ClientId\" : \"coworking.consent\", \r\n    \"ScopesRequest\" : \"profile openid SSO coworking\", \r\n    \"AllowConsent\" : true, \r\n    \"IsAnotherProvider\" : true, \r\n    \"ResourceScopes\" : [\r\n        {\r\n            \"Name\" : \"coworking\", //get จาก api\r\n            \"Checked\" : true, \r\n            \"Claims\" : [\r\n                {\r\n                    \"Name\" : \"email\", //get จาก api ClaimType\r\n                    \"Value\" : \"test@gmail.com\" //value จาก user นั้นๆ\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url_ssotest}}/Api/Consent/Another/Submit",
+					"host": [
+						"{{url_ssotest}}"
+					],
+					"path": [
+						"Api",
+						"Consent",
+						"Another",
+						"Submit"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Api/Consent/Submit",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjQxQ0ZGQjAyRDNCMzIyNjM1NTNFMDRGNzJEODFDODhFRTlFRkMwNzQiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJRY183QXRPekltTlZQZ1QzTFlISWp1bnZ3SFEifQ.eyJuYmYiOjE2MTg5Nzk3ODksImV4cCI6MTYxODk4MzM4OSwiaXNzIjoiaHR0cHM6Ly9zc290ZXN0LmJvb25yYXdkLmNvLnRoIiwiYXVkIjpbImh0dHBzOi8vc3NvdGVzdC5ib29ucmF3ZC5jby50aC9yZXNvdXJjZXMiLCJTU08iXSwiY2xpZW50X2lkIjoiY293b3JraW5nLm1vYmlsZSIsInNjb3BlIjpbIlNTTyJdfQ.AbnOUObFXs8MRiPIhTl25wDAITdpP9pJQiCLDr-6Oa9z6X2resgvswFRhsC6QkEPqcbz6sRGYR7IKIG6isqpVuCUfneNOS1fHdcuq1ac1PDyTzjd1a_DAMiMyF0tKz9XTaQ7LOoMCIp1g9vr28r6wuHqn7lHHpE2wU1E960s8EdTh2xQuM47fHDRYrnZwwkqufxVpFHrgffOymmFVhIxlFlCqOrHQarQc1leDt2ZIQulDYesmOjspwWJatXH1Sphqv7MWTGw5K6fORzlgsLyc17u2HIhFdo7v0n33wlQtWF20HjVxD_zqVZ7MHJq2p2g8Q_G6vUWZGNFuAr1g0_LXA",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"UserName\" : \"\",\r\n    \"UserId\" : \"1e7bd635-5478-4426-ba04-0098d211ac56\",\r\n    \"ClientId\" : \"coworking.consent\", \r\n    \"ScopesRequest\" : \"SSO coworking\", \r\n    \"AllowConsent\" : true, \r\n    \"IsAnotherProvider\" : true, \r\n    \"ResourceScopes\" : [\r\n        {\r\n            \"Name\" : \"coworking\", //get จาก api\r\n            \"Checked\" : true, \r\n            \"Claims\" : [\r\n                {\r\n                    \"Name\" : \"email\", //get จาก api ClaimType\r\n                    \"Value\" : \"test@gmail.com\" //value จาก user นั้นๆ\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_ssotest}}/Api/Consent/Another/Submit",
+							"host": [
+								"{{url_ssotest}}"
+							],
+							"path": [
+								"Api",
+								"Consent",
+								"Another",
+								"Submit"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 21 Apr 2021 04:47:42 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"HasValidationError\": false,\n    \"ValidationError\": null,\n    \"Status\": true\n}"
+				}
+			]
+		}
+	]
+}

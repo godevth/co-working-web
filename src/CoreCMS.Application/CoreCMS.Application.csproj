@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IdentityModel" Version="4.2.0" />
+    <PackageReference Include="IdentityServer4" Version="3.1.2" />
+    <PackageReference Include="JWT" Version="8.2.0" />
+    <PackageReference Include="LinqKit.Microsoft.EntityFrameworkCore" Version="3.0.0" />
+    <PackageReference Include="MediatR" Version="8.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.3" />
+    <PackageReference Include="Microsoft.Graph" Version="3.19.0" />
+    <PackageReference Include="RestSharp" Version="106.11.7" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.0.24" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ApiMasterData\Commands\" />
+    <Folder Include="Facility\Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CoreCMS.Data\CoreCMS.Data.csproj" />
+    <ProjectReference Include="..\CoreCMS.Domain\CoreCMS.Domain.csproj" />
+    <ProjectReference Include="..\CoreCMS.Persistence\CoreCMS.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>

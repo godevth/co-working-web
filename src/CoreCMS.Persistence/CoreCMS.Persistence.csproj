@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200414075719_UserSearchView.cs" />
+    <Compile Remove="Migrations\20200414075719_UserSearchView.Designer.cs" />
+    <Compile Remove="Migrations\20201211072152_Noti.cs" />
+    <Compile Remove="Migrations\20201211072152_Noti.Designer.cs" />
+    <Compile Remove="Migrations\20201211072735_Noti.cs" />
+    <Compile Remove="Migrations\20201211072735_Noti.Designer.cs" />
+    <Compile Remove="Migrations\20201216100423_historyView.cs" />
+    <Compile Remove="Migrations\20201216100423_historyView.Designer.cs" />
+    <Compile Remove="Migrations\20201222055939_BookingRoomPrice.cs" />
+    <Compile Remove="Migrations\20201222055939_BookingRoomPrice.Designer.cs" />
+    <Compile Remove="Migrations\20201228100757_setMin.cs" />
+    <Compile Remove="Migrations\20201228100757_setMin.Designer.cs" />
+    <Compile Remove="Migrations\20210119065925_addCompanyToPlace.cs" />
+    <Compile Remove="Migrations\20210119065925_addCompanyToPlace.Designer.cs" />
+    <Compile Remove="Migrations\20210126090839_AlterHistoryView2.cs" />
+    <Compile Remove="Migrations\20210126090839_AlterHistoryView2.Designer.cs" />
+    <Compile Remove="Migrations\20210204083256_AddBookingMenu.cs" />
+    <Compile Remove="Migrations\20210204083256_AddBookingMenu.Designer.cs" />
+    <Compile Remove="Migrations\20210204083945_AlterNotification.cs" />
+    <Compile Remove="Migrations\20210204083945_AlterNotification.Designer.cs" />
+    <Compile Remove="Migrations\20210204084709_AddBookingMenu.cs" />
+    <Compile Remove="Migrations\20210204084709_AddBookingMenu.Designer.cs" />
+    <Compile Remove="Migrations\20210218063457_alterviewHistoryAndPlaceRoom.cs" />
+    <Compile Remove="Migrations\20210218063457_alterviewHistoryAndPlaceRoom.Designer.cs" />
+    <Compile Remove="Migrations\20210405100653_AddUserConsentPersistedGrantsView.cs" />
+    <Compile Remove="Migrations\20210405100653_AddUserConsentPersistedGrantsView.Designer.cs" />
+    <Compile Remove="Migrations\20210405111105_AddUserConsentPersistedGrantsView.cs" />
+    <Compile Remove="Migrations\20210405111105_AddUserConsentPersistedGrantsView.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CoreCMS.Domain\CoreCMS.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

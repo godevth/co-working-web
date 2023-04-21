@@ -1,0 +1,111 @@
+{
+  "header": {
+    "self": {},
+    "items": []
+  },
+  "aside": {
+    "self": {},
+    "items": [
+      {
+        "title": "Dashboard",
+        "root": true,
+        "icon": "flaticon2-architecture-and-city",
+        "page": "dashboard",
+        "translate": "MENU.DASHBOARD",
+        "bullet": "dot"
+      },
+      {
+        "section": "Master",
+        "translate": "MENU.MASTER.SECTION"
+      },
+      {
+        "title": "User",
+        "root": true,
+        "icon": "fas fa-users",
+        "page": "user/search",
+        "translate": "MENU.MASTER.USER",
+        "permissions": ["super_admin", "admin"]
+      },
+      {
+        "title": "Role",
+        "root": true,
+        "icon": "fas fa-user-shield",
+        "page": "role/search",
+        "translate": "MENU.MASTER.ROLE",
+        "permissions": ["super_admin", "admin"]
+      },
+      {
+        "title": "UserType",
+        "root": true,
+        "icon": "fas fa-users-cog",
+        "page": "userType/search",
+        "translate": "MENU.MASTER.USER_TYPE",
+        "permissions": ["super_admin", "admin"]
+      },
+      {
+        "title": "PlaceType",
+        "root": true,
+        "icon": "fas flaticon-home-2",
+        "page": "placeType/search",
+        "translate": "MENU.MASTER.LOCATION_TYPE",
+        "permissions": ["super_admin", "admin", "business_owner", "system"]
+      },
+      {
+        "title": "Place",
+        "root": true,
+        "icon": "fas flaticon-placeholder-3",
+        "page": "place/search",
+        "translate": "MENU.MASTER.PLACE",
+        "permissions": ["super_admin", "admin", "business_owner", "system"]
+      },
+      {
+        "title": "Place",
+        "root": true,
+        "icon": "far fa-check-square",
+        "page": "approve/search",
+        "translate": "MENU.MASTER.APPROVE_PLACE",
+        "permissions": ["super_admin", "admin"]
+      },
+      {
+        "title": "RoomType",
+        "root": true,
+        "icon": "fas fa-users",
+        "page": "roomType/search",
+        "translate": "MENU.MASTER.ROOM_TYPE",
+        "permissions": ["super_admin", "admin", "business_owner", "system"]
+      },
+      {
+        "title": "FacilityType",
+        "root": true,
+        "icon": "fas fa-users",
+        "page": "facilityType/search",
+        "translate": "MENU.MASTER.FACILITY_TYPE",
+        "permissions": ["super_admin", "admin", "business_owner", "system"]
+      },
+      {
+        "title": "Facility",
+        "root": true,
+        "icon": "fas fa-users",
+        "page": "facility/search",
+        "translate": "MENU.MASTER.FACILITY",
+        "permissions": ["super_admin", "admin", "business_owner", "system"]
+      },
+      {
+        "title": "Company",
+        "root": true,
+        "icon": "fas fa-users",
+        "page": "company/search",
+        "translate": "MENU.MASTER.COMPANY",
+        "permissions": ["super_admin"]
+      },
+      {
+        "title": "Booking",
+        "root": true,
+        "icon": "fas flaticon2-open-text-book",
+        "page": "booking/search",
+        "translate": "MENU.MASTER.BOOKING",
+        "permissions": ["super_admin", "admin", "business_owner", "system"]
+      }
+    ]
+  }
+}

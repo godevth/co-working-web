@@ -1,0 +1,43 @@
+//
+// Page - Error 1
+// Pages SASS files are compiled into separate css files
+//
+
+
+
+// Global config
+@import "../../config";
+
+// Layout config
+@import "../../global/layout/config.scss";
+
+.kt-landing-v1 {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
+    .kt-landing-v1__container {
+        margin: 5%;
+
+        .kt-h1-v1 {
+            // font-size: 100px;
+            margin-top: 5%;
+            font-weight: 700;
+            color: #000;
+        }
+
+        .kt-h3-v1 {
+            // font-size: 100px;
+            font-weight: 700;
+            color: #000;
+        }
+        
+        .kt-p-v1 {
+            font-size:  1.5rem;
+            color: #000
+        }
+
+    }
+}
+

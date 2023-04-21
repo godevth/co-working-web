@@ -1,0 +1,17 @@
+version: "3.4"
+
+services:
+  co-working:
+    #    network_mode: host
+    environment:
+      - TZ=Asia/Bangkok
+      - ASPNETCORE_ENVIRONMENT=Dev-Docker
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - "8910:80"
+    # volumes:
+    #   - /root/draught-sit/volumes/Plupload:/app/wwwroot/Plupload
+    #   - /root/draught-sit/volumes/uploads:/app/wwwroot/uploads
+    restart: always
+    extra_hosts:
+      - "cow-dev.sbpds.co.th:10.7.9.201"

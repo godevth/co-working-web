@@ -1,0 +1,1821 @@
+{
+	"info": {
+		"_postman_id": "da0fa791-d957-4a15-82dc-b46b958125d0",
+		"name": "Co Working Mobile",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": ".Create Token (Password)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonBody = JSON.parse(responseBody);",
+							"pm.environment.set(\"AccessToken\", jsonBody.access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "tokenType",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "client_id",
+							"value": "{{ClientId}}",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "{{ClientSecret}}",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "{{GrantTypePassword}}",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "{{ScopePassword}}",
+							"type": "text"
+						},
+						{
+							"key": "provider",
+							"value": "{{ProviderLocal}}",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "{{Username}}",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "provider",
+							"value": "{{ProviderApple}}",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "username",
+							"value": "{{ProviderKey}}",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "{{HashPassword}}",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "username",
+							"value": "2mootangz@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "P@ssw0rd",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "iunif.gamer10@gmail.com",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "Asdf+123456",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{DomainSIT}}/connect/token",
+					"host": [
+						"{{DomainSIT}}"
+					],
+					"path": [
+						"connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": ".Create Token (Credentials)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonBody = JSON.parse(responseBody);",
+							"pm.environment.set(\"AccessToken\", jsonBody.access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "tokenType",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "client_id",
+							"value": "{{ClientId}}",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "{{ClientSecret}}",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "{{GrantTypeCredentials}}",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "{{ScopeCredentials}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{DomainLocal}}/connect/token",
+					"host": [
+						"{{DomainLocal}}"
+					],
+					"path": [
+						"connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[User] Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Email\": \"2mootangz@gmail.com\",\n\t\"Password\": \"asdf+1234\",\n\t\"ConfirmPassword\" : \"asdf+1234\",\n\t\"FirstName\": \"2MooTangz\",\n\t\"LastName\": \"Gmail\",\n    \"Gender\": \"F\",\n    \"BirthDate\": \"1992-04-29\",\n\t\"Address\": \"test\",\n    \"tumbolId\": \"111\",\n    \"amphurId\": \"222\",\n    \"provinceId\": \"33\",\n    \"postCode\": \"1234\",\n\t\"PhoneNumber\": \"0900000000\",\n    \"PhoneCountryCode\": \"+66\",\n\t\"LoginProvider\" : \"\",\n\t\"ProviderKey\" : \"\",\n\t\"ProviderDisplayName\" : \"\"\n}"
+				},
+				"url": {
+					"raw": "{{DomainSIT}}/Mobile/Api/User/Create",
+					"host": [
+						"{{DomainSIT}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"User",
+						"Create"
+					]
+				},
+				"description": "Register User\r\n- BirthDate ใช้ Format 'YYYY-MM-DD' เท่านั้น\r\n- Gender รองรับ 'F' or 'M' เท่านั้น"
+			},
+			"response": []
+		},
+		{
+			"name": "[User] GetProfile",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"content-length": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{DomainSIT}}/Mobile/Api/User/Get",
+					"host": [
+						"{{DomainSIT}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"User",
+						"Get"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[User] EditProfile",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"FirstName\": \"Suriya\",\n\t\"LastName\": \"Maikan\",\n\t\"Address\": \"test\",\n\t\"TumbolId\": \"111\",\n\t\"AmphurId\": \"222\",\n\t\"ProvinceId\": \"33\",\n\t\"PostCode\": \"1234\",\n\t\"PhoneNumber\": \"099999999\",\n    \"Gender\": \"M\",\n    \"BirthDate\": \"1992-04-29\",\n    \"PhoneCountryCode\": \"+66\",\n    \"Companyname\": \"SBP Digital Services\"\n}"
+				},
+				"url": {
+					"raw": "{{DomainSIT}}/Mobile/Api/User/Edit",
+					"host": [
+						"{{DomainSIT}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"User",
+						"Edit"
+					]
+				},
+				"description": "- BirthDate ใช้ Format 'YYYY-MM-DD' เท่านั้น\r\n- Gender รองรับ 'F' or 'M' เท่านั้น"
+			},
+			"response": []
+		},
+		{
+			"name": "[User] ForgotPassword",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{AccessToken}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-device",
+						"value": "{{Device}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"Email\" : \"2mootangz@gmail.com\"\r\n}"
+				},
+				"url": {
+					"raw": "{{DomainSIT}}/Mobile/Api/User/ForgotPassword",
+					"host": [
+						"{{DomainSIT}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"User",
+						"ForgotPassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[User] ChangePassword",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"OldPassword\": \"P@ssw0rd\",\n\t\"NewPassword\": \"asdf+1234\",\n\t\"ConfirmPassword\" : \"asdf+1234\"\n}"
+				},
+				"url": {
+					"raw": "{{DomainSIT}}/Mobile/Api/User/ChangePassword",
+					"host": [
+						"{{DomainSIT}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"User",
+						"ChangePassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Explore] Search",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{AccessToken}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-device",
+						"value": "{{Device}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"Language\" : \"TH\",\r\n    \"Currency\" : \"THB\",\r\n    \"Facility\" : [], //Id\r\n    \"PlaceType\" :[], // Id\r\n    \"ProvinceId\" : null, //Id\r\n    \"AmpherId\": null, //Id\r\n    \"SearchKeyword\" : \"\",\r\n    \"NearBy\" : \"\", //\"บางโพ,เทส\"\r\n    \"latitude\": \"13.8081\",\r\n    \"longitude\": \"100.559\",\r\n    \"Capacity\" : 10,\r\n    \"StartPrice\" : 0,\r\n    \"EndPrice\" : 10000,\r\n    // Time Shearch\r\n    \"SearchType\": \"Hourly\", // Daily Monthly Hourly\r\n    \"HourlyStart\" : 1617847200000, \r\n    \"HourlyEnd\" : 1617858000000, \r\n    //\"DailyStart\" : 1618074000000, \r\n    //\"DailyEnd\" : 1618333200000,\r\n    // \"MonthlyStart\" : 1617210000000, \r\n    // \"MonthlyEnd\" : 1619715600000,\r\n\r\n    \"ItemsPerPage\" : 20,\r\n    \"Page\" : 1,\r\n    \"SortBy\" : \"\",\r\n    \"SortDesc\" : true\r\n}"
+				},
+				"url": {
+					"raw": "{{DomainLocal}}/Mobile/Api/Place/Search",
+					"host": [
+						"{{DomainLocal}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"Place",
+						"Search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Explore] GetDetail",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "x-device",
+						"type": "text",
+						"value": "{{Device}}",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"Language\" : \"TH\",\r\n    \"Currency\" : \"THB\",\r\n    \"PlaceId\" :\"9DE7ACD7-99B0-46E2-55F3-08D8B83BA9AE\",\r\n    \"RoomStatus\" :\"\", // Reserve Avaliable\r\n    // Time Shearch\r\n    \"SearchType\": \"Daily\", // Daily Monthly Hourly\r\n    //\"HourlyStart\" : 1618104600000, \r\n    //\"HourlyEnd\" : 1618138800000, \r\n    \"DailyStart\" : 1617166800000, \r\n    \"DailyEnd\" : 1617166800000,\r\n    // \"MonthlyStart\" : 1617210000000, \r\n    // \"MonthlyEnd\" : 1619715600000,\r\n    \"RoomTypeId\": []\r\n}"
+				},
+				"url": {
+					"raw": "{{DomainLocal}}/Mobile/Api/Place/GetDetail",
+					"host": [
+						"{{DomainLocal}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"Place",
+						"GetDetail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Explore] Get Time Hourly",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "x-device",
+						"type": "text",
+						"value": "{{Device}}",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"RoomId\" :\"5450fba2-7e42-4027-5f79-08d8b83c4e93\",\r\n    \"SearchDate\" : 1616824800000\r\n}"
+				},
+				"url": {
+					"raw": "{{DomainSIT}}/Mobile/Api/Room/GetTimeHourly",
+					"host": [
+						"{{DomainSIT}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"Room",
+						"GetTimeHourly"
+					],
+					"query": [
+						{
+							"key": "RoomId",
+							"value": "16D3A85B-C532-4594-6903-08D8CDA08888",
+							"disabled": true
+						},
+						{
+							"key": "SearchDate",
+							"value": "1615540800000",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Explore] Get Time Daily",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "x-device",
+						"type": "text",
+						"value": "{{Device}}",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"RoomId\" :\"5450fba2-7e42-4027-5f79-08d8b83c4e93\",\r\n    \"Month\" : 2,\r\n    \"Year\" : 2021\r\n}"
+				},
+				"url": {
+					"raw": "{{DomainSIT}}/Mobile/Api/Room/GetTimeDaily",
+					"host": [
+						"{{DomainSIT}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"Room",
+						"GetTimeDaily"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Explore] Get Time Monthly",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "x-device",
+						"type": "text",
+						"value": "{{Device}}",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"RoomId\" :\"5450fba2-7e42-4027-5f79-08d8b83c4e93\",\r\n    \"Year\" : 2021\r\n}"
+				},
+				"url": {
+					"raw": "{{DomainSIT}}/Mobile/Api/Room/GetTimeMonthly",
+					"host": [
+						"{{DomainSIT}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"Room",
+						"GetTimeMonthly"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Explore] Toggle Wishlist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "x-device",
+						"type": "text",
+						"value": "{{Device}}",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{DomainSIT}}/Mobile/Api/Place/Wishlist?PlaceId=69FFA81D-FD0B-4F16-37FE-08D891BAFC81",
+					"host": [
+						"{{DomainSIT}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"Place",
+						"Wishlist"
+					],
+					"query": [
+						{
+							"key": "PlaceId",
+							"value": "69FFA81D-FD0B-4F16-37FE-08D891BAFC81"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Explore] Get Wishlist",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{DomainSIT}}/Mobile/Api/Place/GetWishlist?Page=0&ItemsPerPage=0&Language=TH",
+					"host": [
+						"{{DomainSIT}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"Place",
+						"GetWishlist"
+					],
+					"query": [
+						{
+							"key": "Page",
+							"value": "0"
+						},
+						{
+							"key": "ItemsPerPage",
+							"value": "0"
+						},
+						{
+							"key": "Language",
+							"value": "TH"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[FacilityAndPlaceType] Get",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "x-device",
+						"type": "text",
+						"value": "{{Device}}",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"Language\" : \"TH\",\r\n    \"SearchKeyword\" : \"\",\r\n    \"SortBy\" : \"\",\r\n    \"SortDesc\" : true\r\n}"
+				},
+				"url": {
+					"raw": "{{DomainSIT}}/Mobile/Api/FacilityAndPlaceType/FacilityAndPlaceType",
+					"host": [
+						"{{DomainSIT}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"FacilityAndPlaceType",
+						"FacilityAndPlaceType"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RegisterDevice",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "   {\r\n        \"UserId\":\"0461f2a9-8391-418e-802e-cbc633e96660\",\r\n        \"Token\":\"34sdfsdfsq1231231234567245\",\r\n        \"AppId\":\"878846333577\",\r\n        \"AppName\" : \"Co-Working Space\",\r\n        \"OS\":\"Android\",\r\n        \"Language\":\"EN\"\r\n        }"
+				},
+				"url": {
+					"raw": "{{DomainLocal}}/Mobile/Api/Notification/RegisterDevice",
+					"host": [
+						"{{DomainLocal}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"Notification",
+						"RegisterDevice"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UnRegisterDevice",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "   {\r\n        \"UserId\":\"0461f2a9-8391-418e-802e-cbc633e96660\",\r\n        \"Token\":\"34sdfsdfsq1231231234567245\",\r\n        \"AppId\":\"878846333577\",\r\n        \"AppName\" : \"Co-Working Space\",\r\n        \"OS\":\"Android\",\r\n        \"Language\":\"EN\"\r\n        }"
+				},
+				"url": {
+					"raw": "{{DomainLocal}}/Mobile/Api/Notification/UnRegisterDevice",
+					"host": [
+						"{{DomainLocal}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"Notification",
+						"UnRegisterDevice"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ResetBadge",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{DomainLocal}}/Mobile/Api/Notification/ResetBadge",
+					"host": [
+						"{{DomainLocal}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"Notification",
+						"ResetBadge"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateDevice",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "   {\r\n        \"Token\":\"34sdfsdfsq1231231234567245\",\r\n        \"Language\":\"EN\"\r\n        }"
+				},
+				"url": {
+					"raw": "{{DomainLocal}}/Mobile/Api/Notification/UpdateDevice",
+					"host": [
+						"{{DomainLocal}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"Notification",
+						"UpdateDevice"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Message Canceled",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"AppId\":\"Cow\",\r\n    \"RefCode\":\"18\",\r\n    \"NotificationType\":\"BOOKING_MENU\"\r\n}"
+				},
+				"url": {
+					"raw": "{{DomainLocal}}/Mobile/Api/Notification/CancelNotification",
+					"host": [
+						"{{DomainLocal}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"Notification",
+						"CancelNotification"
+					],
+					"query": [
+						{
+							"key": "Authorization",
+							"value": "Bearer {{AccessToken}}",
+							"disabled": true
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Select2PlaceType",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{DomainLocal}}/Mobile/Api/PlaceType/Select2PlaceType?Search=",
+					"host": [
+						"{{DomainLocal}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"PlaceType",
+						"Select2PlaceType"
+					],
+					"query": [
+						{
+							"key": "Search",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Select2Place",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{DomainLocal}}/Mobile/Api/Place/Select2Place?Search=&PlaceTypeId=2",
+					"host": [
+						"{{DomainLocal}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"Place",
+						"Select2Place"
+					],
+					"query": [
+						{
+							"key": "Search",
+							"value": ""
+						},
+						{
+							"key": "PlaceTypeId",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Select2Facility Of Place/Room",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{DomainLocal}}/Mobile/Api/Facility/Select2Facility?Search=&FacilityGroup=0&Id=b2d58d2e-9cde-420d-5b47-08d8974551e6",
+					"host": [
+						"{{DomainLocal}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"Facility",
+						"Select2Facility"
+					],
+					"query": [
+						{
+							"key": "Search",
+							"value": ""
+						},
+						{
+							"key": "FacilityGroup",
+							"value": "0",
+							"description": "0 ห้อง,1 สถานที่"
+						},
+						{
+							"key": "Id",
+							"value": "b2d58d2e-9cde-420d-5b47-08d8974551e6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Select2RoomType",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{DomainLocal}}/Mobile/Api/RoomType/Select2RoomType?Search=",
+					"host": [
+						"{{DomainLocal}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"RoomType",
+						"Select2RoomType"
+					],
+					"query": [
+						{
+							"key": "Search",
+							"value": ""
+						},
+						{
+							"key": "PlaceTypeId",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Booking] Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "x-device",
+						"type": "text",
+						"value": "{{Device}}",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"RoomId\": \"16D3A85B-C532-4594-6903-08D8CDA08888\",\r\n    \"BookingStartDate\": 1618203600000,\r\n    \"BookingEndDate\": 1618216200000,\r\n    \"TimeType\": \"Hourly\", //Daily Monthly Hourly\r\n    \"PaymentMethodCode\": \"PAYMENT_METHOD_COD\",\r\n    \"Remark\": \"-\",\r\n    \"IsOwner\": true,\r\n    \"CustomerEmail\" : \"2mootangz@gmail.com\",\r\n    \"CustomerFirstname\": \"2mootangz\",\r\n    \"CustomerLastname\": \"gmail\",\r\n    \"CustomerPhoneNumber\": \"\",\r\n    \"Discount\": 0,\r\n    \"Facilities\": [\r\n        // {\r\n        //     \"FacilityServicesId\" : 70,\r\n        //     \"Qty\" : 10\r\n        // }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{DomainSIT}}/Mobile/Api/Booking/Create",
+					"host": [
+						"{{DomainSIT}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"Booking",
+						"Create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Booking] Update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "x-device",
+						"type": "text",
+						"value": "{{Device}}",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"BookingId\": 1471,\r\n    \"RoomId\": \"5450fba2-7e42-4027-5f79-08d8b83c4e93\",\r\n    \"BookingStartDate\": 1617246000000,\r\n    \"BookingEndDate\": 1617253200000,\r\n    \"TimeType\": \"Hourly\", //Daily Monthly Hourly\r\n    \"PaymentMethodCode\": \"PAYMENT_METHOD_COD\",\r\n    \"Remark\": \"(^_^)\",\r\n    \"IsOwner\": false,\r\n    \"CustomerEmail\" : \"2mootangz@gmail.com\",\r\n    \"CustomerFirstname\": \"2mootangz\",\r\n    \"CustomerLastname\": \"gmail\",\r\n    \"CustomerPhoneNumber\": \"\",\r\n    \"Discount\": 0,\r\n    \"Facilities\": [\r\n        {\r\n            \"FacilityServicesId\" : 64,\r\n            \"Qty\" : 2\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "{{DomainSIT}}/Mobile/Api/Booking/Update",
+					"host": [
+						"{{DomainSIT}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"Booking",
+						"Update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Booking] Cancel",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "",
+						"type": "text",
+						"value": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Language\":\"TH\",\r\n    \"BookingId\":\"1219\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{DomainLocal}}/Mobile/Api/Booking/Cancel",
+					"host": [
+						"{{DomainLocal}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"Booking",
+						"Cancel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Booking] History",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Search\":\"\",\r\n    \"StartDate\":\"\",\r\n    \"EndDate\":\"\",\r\n    \"GetStatus\":\"all\",//all = ทั้งหมดที่ผ่านมาแล้วและยกเลิก , coming = เวลาจองที่ใกล้เข้ามา ที่สามารถยกเลิกจ้องได้, checkinout = ที่สามารถเช็คอินเช็คเอาท์ได้ ,cancel =ดึงเฉพาะยกเลิก\r\n    \"Page\":1,\r\n    \"ItemsPerPage\":35,\r\n    \"Language\":\"TH\"\r\n}"
+				},
+				"url": {
+					"raw": "{{DomainLocal}}/Mobile/Api/Booking/History",
+					"host": [
+						"{{DomainLocal}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"Booking",
+						"History"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Booking] Detail",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{DomainSIT}}/Mobile/Api/Booking/Detail?Language=TH&BookingId=1492",
+					"host": [
+						"{{DomainSIT}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"Booking",
+						"Detail"
+					],
+					"query": [
+						{
+							"key": "Language",
+							"value": "TH"
+						},
+						{
+							"key": "BookingNumber",
+							"value": "2103-0180",
+							"disabled": true
+						},
+						{
+							"key": "BookingId",
+							"value": "1492"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Booking] CheckIn",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{DomainSIT}}/Mobile/Api/Booking/CheckIn/1341",
+					"host": [
+						"{{DomainSIT}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"Booking",
+						"CheckIn",
+						"1341"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Booking] CheckOut",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{DomainSIT}}/Mobile/Api/Booking/CheckOut/1341",
+					"host": [
+						"{{DomainSIT}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"Booking",
+						"CheckOut",
+						"1341"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Booking] CalculatePricing",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "x-device",
+						"type": "text",
+						"value": "{{Device}}",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"RoomId\": \"5450fba2-7e42-4027-5f79-08d8b83c4e93\",\r\n    \"TimeType\": \"Hourly\", //Daily Monthly Hourly\r\n    \"StartDateTime\": 1617246000000,\r\n    \"EndDateTime\": 1617246000000,\r\n    \"Discount\" : 0,\r\n    \"Language\": \"TH\",\r\n    \"Facilities\": [\r\n        {\r\n            \"FacilityServicesId\" : 66,\r\n            \"Qty\" : 2\r\n        }\r\n    ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{DomainSIT}}/Mobile/Api/Booking/CalculatePricing",
+					"host": [
+						"{{DomainSIT}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"Booking",
+						"CalculatePricing"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[IoTDeviceGroup] Select2DeviceGroup",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{DomainSIT}}/Mobile/Api/IoTDevice/Select2DeviceGroup?RoomId=1bde8948-f307-43ce-5f7a-08d8b83c4e93&BookingId=1341",
+					"host": [
+						"{{DomainSIT}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"IoTDevice",
+						"Select2DeviceGroup"
+					],
+					"query": [
+						{
+							"key": "RoomId",
+							"value": "1bde8948-f307-43ce-5f7a-08d8b83c4e93"
+						},
+						{
+							"key": "Search",
+							"value": "ไฟ",
+							"disabled": true
+						},
+						{
+							"key": "BookingId",
+							"value": "1341"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[IoTDeviceGroup] Select2Device",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{DomainSIT}}/Mobile/Api/IoTDevice/Select2Device?IoTDeviceGroupId=4&BookingId=1341",
+					"host": [
+						"{{DomainSIT}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"IoTDevice",
+						"Select2Device"
+					],
+					"query": [
+						{
+							"key": "IoTDeviceGroupId",
+							"value": "4"
+						},
+						{
+							"key": "Search",
+							"value": "ไฟ",
+							"disabled": true
+						},
+						{
+							"key": "BookingId",
+							"value": "1341"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[IoTDevice] ChangeStatus",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{AccessToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "x-device",
+						"type": "text",
+						"value": "{{Device}}",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"IoTDeviceGroupId\": 4,\r\n    \"IoTDeviceId\": null,\r\n    \"StatusCode\": \"IOT_DEVICE_STATUS_ON\",\r\n    \"Dimmer\": 25,\r\n    \"BookingId\" : 1341\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{DomainSIT}}/Mobile/Api/IoTDevice/ChangeStatus",
+					"host": [
+						"{{DomainSIT}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"IoTDevice",
+						"ChangeStatus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://111.223.40.20:1880/api/MockupControl",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Device_ID\":\"1234\",\r\n    \"Config\":\"ON\",\r\n    \"Status\":\"1\",\r\n    \"Dimmer\" : 25\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://111.223.40.20:1880/api/MockupControl",
+					"protocol": "http",
+					"host": [
+						"111",
+						"223",
+						"40",
+						"20"
+					],
+					"port": "1880",
+					"path": [
+						"api",
+						"MockupControl"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[PlaceTheme] Search",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{AccessToken}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-device",
+						"value": "{{Device}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"Language\" : \"TH\",\r\n    \"ItemsPerPage\" : 20,\r\n    \"Page\" : 1\r\n}"
+				},
+				"url": {
+					"raw": "{{DomainLocal}}/Mobile/Api/PlaceTheme/Search",
+					"host": [
+						"{{DomainLocal}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"PlaceTheme",
+						"Search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[PlaceTheme] Change",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{AccessToken}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-device",
+						"value": "{{Device}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{DomainSIT}}/Mobile/Api/PlaceTheme/0/Change",
+					"host": [
+						"{{DomainSIT}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"PlaceTheme",
+						"0",
+						"Change"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PaymentResponse",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"payload\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJtZXJjaGFudElEIjoiNzY0NzY0MDAwMDAxMzEyIiwiaW52b2ljZU5vIjoiMjEwMS0wMTA5IiwiYW1vdW50IjoyMDAuMCwibWNwQW1vdW50IjowLjAsIm1jcEZ4UmF0ZSI6MC4wLCJtY3BDdXJyZW5jeUNvZGUiOm51bGwsImN1cnJlbmN5Q29kZSI6IlRIQiIsInRyYW5zYWN0aW9uRGF0ZVRpbWUiOiIyMDIxMDQwMjE2NTIyMCIsImFnZW50Q29kZSI6IktUQyIsImNoYW5uZWxDb2RlIjoiVkkiLCJhcHByb3ZhbENvZGUiOiI3OTM2OTAiLCJyZWZlcmVuY2VObyI6IjM0OTUwODUiLCJwYW4iOm51bGwsImNhcmRUb2tlbiI6IiIsImlzc3VlckNvdW50cnkiOiJVUyIsImVjaSI6IjA1IiwiaW5zdGFsbG1lbnRQZXJpb2QiOm51bGwsImludGVyZXN0VHlwZSI6bnVsbCwiaW50ZXJlc3RSYXRlIjowLjAsImluc3RhbGxtZW50TWVyY2hhbnRBYnNvcmJSYXRlIjowLjAsInJlY3VycmluZ1VuaXF1ZUlEIjoiIiwiZnhBbW91bnQiOjAuMCwiZnhSYXRlIjowLjAsImZ4Q3VycmVuY3lDb2RlIjpudWxsLCJ1c2VyRGVmaW5lZDEiOiIiLCJ1c2VyRGVmaW5lZDIiOiIxN2IyMzc1MC04NDgwLTQ0MDUtOGMyZS0xOTQ3OWEwM2FkM2QiLCJ1c2VyRGVmaW5lZDMiOiIiLCJ1c2VyRGVmaW5lZDQiOiIiLCJ1c2VyRGVmaW5lZDUiOiIiLCJyZXNwQ29kZSI6IjAwMDAiLCJyZXNwRGVzYyI6IlN1Y2Nlc3MifQ.fwQbtTpXE6Z-lIZs3Tf2-JLPwyZbYBIx63JGx4uisgw\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{DomainLocal}}/Api/PaymentResponse/",
+					"host": [
+						"{{DomainLocal}}"
+					],
+					"path": [
+						"Api",
+						"PaymentResponse",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[TermAndCondition] Search",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{AccessToken}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-device",
+						"value": "{{Device}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"Language\" : \"TH\",\r\n    \"ItemsPerPage\" : 20,\r\n    \"Page\" : 1\r\n}"
+				},
+				"url": {
+					"raw": "{{DomainSIT}}/Mobile/Api/TermAndCondition/Search",
+					"host": [
+						"{{DomainSIT}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"TermAndCondition",
+						"Search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[TermAndCondition] Submit",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{AccessToken}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-device",
+						"value": "{{Device}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{DomainSIT}}/Mobile/Api/TermAndCondition/1/Submit",
+					"host": [
+						"{{DomainSIT}}"
+					],
+					"path": [
+						"Mobile",
+						"Api",
+						"TermAndCondition",
+						"1",
+						"Submit"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
